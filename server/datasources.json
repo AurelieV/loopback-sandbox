@@ -3,7 +3,7 @@
     "host": "localhost",
     "port": 27017,
     "database": "test",
-    "name": "test",
+    "name": "db",
     "connector": "mongodb"
   }
 }

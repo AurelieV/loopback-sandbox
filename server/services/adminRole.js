@@ -7,7 +7,7 @@ module.exports = function init(app, options) {
 
   var ACL = app.models.ACL;
   var Role = app.models.Role;
-  var User = app.models.User;
+  var User = app.models.MyUser;
   var RoleMapping = app.models.RoleMapping;
 
   // Add role to user
@@ -81,7 +81,7 @@ module.exports = function init(app, options) {
   // Add ACL for role managing by admin
   var pUserACL = Promise.all([
     ACL.findOrCreate({
-      model: 'User',
+      model: 'MyUser',
       accessType: ACL.EXECUTE,
       principalType: ACL.ROLE,
       principalId: 'admin',
@@ -89,7 +89,7 @@ module.exports = function init(app, options) {
       property: 'addRole'
     })
     , ACL.findOrCreate({
-      model: 'User',
+      model: 'MyUser',
       accessType: ACL.EXECUTE,
       principalType: ACL.ROLE,
       principalId: 'admin',
@@ -97,7 +97,7 @@ module.exports = function init(app, options) {
       property: 'removeRole'
     })
     , ACL.findOrCreate({
-      model: 'User',
+      model: 'MyUser',
       accessType: ACL.READ,
       principalType: ACL.ROLE,
       principalId: 'admin',
@@ -105,7 +105,7 @@ module.exports = function init(app, options) {
       property: 'findByRole'
     })
     , ACL.findOrCreate({
-      model: 'User',
+      model: 'MyUser',
       accessType: 'READ',
       principalType: ACL.ROLE,
       principalId: 'admin',
@@ -113,7 +113,7 @@ module.exports = function init(app, options) {
       property: 'find'
     })
     , ACL.findOrCreate({
-      model: 'User',
+      model: 'MyUser',
       accessType: 'READ',
       principalType: ACL.ROLE,
       principalId: 'admin',
