@@ -37,7 +37,7 @@
       ref  : "origin/master",
       repo : "https://github.com/AurelieV/loopback-sandbox.git",
       path : "~/pptq-calendar",
-      "post-deploy" : ""
+      "post-deploy" : "ln -s ~/pptq-calendar/shared/datasources.json server/datasources.json && npm install && pm2 startOrRestart ecosystem.json5"
     }
   }
 }
