@@ -10,6 +10,9 @@ module.exports = function init(app, options) {
   var User = app.models.MyUser;
   var RoleMapping = app.models.RoleMapping;
 
+  // Ugly hack for mongo error wainting bug fix for connector
+  RoleMapping.defineProperty('principalId', { type: function(id) {return require('mongodb').ObjectId('' + id)} });
+
   // Add role to user
   User.hasMany(Role, {foreignKey: 'principalId', through: RoleMapping, keyThrough: 'roleId'});
 
